@@ -64,20 +64,20 @@ public class CustomResultViewModel extends AndroidViewModel {
         // Instead of exposing the list of Loans, we can apply a transformation and expose Strings.
         mLoansResult = Transformations.map(loans,
                 new Function<List<LoanWithUserAndBook>, String>() {
-            @Override
-            public String apply(List<LoanWithUserAndBook> loansWithUserAndBook) {
-                StringBuilder sb = new StringBuilder();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm",
-                        Locale.US);
+                    @Override
+                    public String apply(List<LoanWithUserAndBook> loansWithUserAndBook) {
+                        StringBuilder sb = new StringBuilder();
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm",
+                                Locale.US);
 
-                for (LoanWithUserAndBook loan : loansWithUserAndBook) {
-                    sb.append(String.format("%s\n  (Returned: %s)\n",
-                            loan.bookTitle,
-                            simpleDateFormat.format(loan.endTime)));
-                }
-                return sb.toString();
-            }
-        });
+                        for (LoanWithUserAndBook loan : loansWithUserAndBook) {
+                            sb.append(String.format("%s\n  (Returned: %s)\n",
+                                    loan.bookTitle,
+                                    simpleDateFormat.format(loan.endTime)));
+                        }
+                        return sb.toString();
+                    }
+                });
     }
 
     private Date getYesterdayDate() {

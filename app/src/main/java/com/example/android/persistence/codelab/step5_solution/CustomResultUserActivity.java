@@ -16,10 +16,8 @@
 
 package com.example.android.persistence.codelab.step5_solution;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -52,12 +50,7 @@ public class CustomResultUserActivity extends AppCompatActivity {
     }
 
     private void subscribeUiLoans() {
-        mShowUserViewModel.getLoansResult().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String result) {
-                mBooksTextView.setText(result);
-            }
-        });
+        mShowUserViewModel.getLoansResult().observe(this, result -> mBooksTextView.setText(result));
     }
 
     public void onRefreshBtClicked(View view) {
